@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orberyx — Da curiosidade de uma criança às fronteiras do espaço</title>
+  
+  <meta name="description" content="A Orberyx transforma o encantamento infantil de olhar as estrelas em arquitetura de software, dados do cosmos e tecnologia aberta acessível.">
+  <meta property="og:title" content="Orberyx — Da curiosidade de uma criança às fronteiras do espaço">
+  <meta property="og:description" content="Construímos pontes de código entre os dados do cosmos e a tela do usuário.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon Celestial -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2306080d'/><circle cx='50' cy='50' r='28' fill='none' stroke='%23e5b974' stroke-width='4' stroke-dasharray='5 3'/><circle cx='50' cy='50' r='14' fill='%237eb7e8'/><circle cx='70' cy='32' r='4' fill='%23e5b974'/></svg>">
+
+  <!-- Typography: Fraunces (Editorial Serif) + Outfit (Modern Sans) + JetBrains Mono (Astronomy Data) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Acessibilidade -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+  <!-- Textura de Grão Analógico (Film Grain) -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Céu Estelar Interativo (Canvas) -->
+  <canvas id="star-canvas" aria-hidden="true"></canvas>
+
+  <!-- Nebulosas e Brilhos Atmosféricos -->
+  <div class="cosmic-nebula" aria-hidden="true">
+    <div class="nebula-glow nebula-1"></div>
+    <div class="nebula-glow nebula-2"></div>
+    <div class="nebula-glow nebula-3"></div>
+  </div>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGAÇÃO FLUTUANTE (Floating Island)
+       ======================================================================== -->
+  <div class="header-nav-wrapper">
+    <div class="container">
+      <nav class="floating-nav" aria-label="Navegação principal">
+        <a href="#inicio" class="brand-link" aria-label="Orberyx Página Inicial">
+          <picture>
+            <source srcset="assets/orberyx-white.svg" type="image/svg+xml">
+            <img src="assets/orberyx-white.png" alt="Orberyx Logo" class="brand-logo-img">
+          </picture>
+          <span class="brand-title">Orberyx</span>
+          <span class="brand-badge">POO • 2026</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#manifesto">Manifesto</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#tripulacao">Tripulação</a></li>
+        </ul>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <a href="https://github.com/Orberyx/AstroWatch" target="_blank" rel="noopener noreferrer" class="nav-cta">
+            <span>GitHub</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <button class="mobile-nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="17" x2="20" y2="17"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Menu Mobile Expandido -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <a href="#inicio">Início</a>
+    <a href="#manifesto">Manifesto</a>
+    <a href="#sobre">Sobre Nós</a>
+    <a href="#projetos">AstroWatch</a>
+    <a href="#tripulacao">Nossa Equipe</a>
+    <a href="https://github.com/Orberyx" target="_blank" rel="noopener noreferrer" style="font-size: 1.1rem; color: var(--accent-gold);">GitHub da Organização ↗</a>
+  </div>
+
+  <main id="conteudo">
+
+    <!-- ======================================================================
+         HERO SECTION: "O Olhar e a Fronteira"
+         ====================================================================== -->
+    <header class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Texto Principal -->
+          <div class="hero-content reveal-on-scroll">
+            <div class="telemetry-row">
+              <div class="telemetry-item">
+                <span class="eyebrow-pulsar"></span>
+                <span class="font-mono">RA 00h 42m 44s</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="font-mono">DEC +41° 16′ 09″</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="font-mono">ÓRBITA TERRESTRE (NEO)</span>
+              </div>
+            </div>
+
+            <div class="eyebrow-badge">
+              <span class="eyebrow-pulsar"></span>
+              Startup Acadêmica • Engenharia Espacial
+            </div>
+
+            <h1 class="hero-title">
+              Da curiosidade de uma criança às <em>fronteiras do espaço.</em>
+            </h1>
+
+            <p class="hero-manifesto-lead">
+              Tudo começa com um olhar. Antes do código, das equações e da engenharia, existe a curiosidade pura de quem olha para o céu e se pergunta o que há além.
+            </p>
+
+            <p class="hero-manifesto-sub">
+              A Orberyx nasceu para transformar esse encantamento em tecnologia. Construímos pontes de código entre os dados do cosmos e a tela do usuário.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projetos" class="btn-primary">
+                <span>Explorar o AstroWatch</span>
+                <span class="btn-icon-pill">
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                    <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </a>
+
+              <a href="#manifesto" class="btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>Ler o Manifesto</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Representação Visual Cósmica / Observatório -->
+          <div class="hero-visual-wrapper reveal-on-scroll">
+            <div class="celestial-compass-card">
+              <div class="reticle-corner rc-tl"></div>
+              <div class="reticle-corner rc-tr"></div>
+              <div class="reticle-corner rc-bl"></div>
+              <div class="reticle-corner rc-br"></div>
+
+              <!-- Anéis de Órbita Astronômica -->
+              <div class="orbit-rings">
+                <div class="orbit-ring r1"></div>
+                <div class="orbit-ring r2"></div>
+                <div class="orbit-ring r3"></div>
+              </div>
+
+              <!-- Centro: O Planeta & Observatório -->
+              <div class="celestial-center">
+                <div class="planet-icon">🌍</div>
+                <div class="planet-label">Terra • 1.0 AU</div>
+              </div>
+
+              <!-- Chip Flutuante Superior: Telemetria Ativa -->
+              <div class="floating-telemetry-chip chip-top">
+                <div class="chip-header">
+                  <span class="status-dot active"></span>
+                  <span>NASA NeoWS Stream</span>
+                </div>
+                <div class="chip-body">Asteroide Monitorado</div>
+                <div class="chip-metric" id="telemetry-distance">4.28 M km da Terra</div>
+              </div>
+
+              <!-- Chip Flutuante Inferior: Velocidade Orbital -->
+              <div class="floating-telemetry-chip chip-bottom">
+                <div class="chip-header">
+                  <span class="status-dot warning"></span>
+                  <span>Vetor Relativo</span>
+                </div>
+                <div class="chip-body">Velocidade Cósmica</div>
+                <div class="chip-metric" id="telemetry-velocity">24.62 km/s</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ======================================================================
+         SEÇÃO: O MANIFESTO ORBERYX (Experiência Editorial Nobre)
+         ====================================================================== -->
+    <section class="manifesto-section" id="manifesto">
+      <div class="container">
+        
+        <div class="manifesto-frame reveal-on-scroll">
+          <div class="manifesto-quote-card">
+            
+            <div class="manifesto-eyebrow">
+              <span class="manifesto-tag">Documento Fundamental nº 01</span>
+              <span class="manifesto-date">2026 • Declaração de Propósito</span>
+            </div>
+
+            <blockquote class="manifesto-body">
+              "Tudo começa com um olhar. Antes do código, das equações e da engenharia, existe a curiosidade pura de quem olha para o céu e se pergunta o que há além.
+              <br><br>
+              A <span class="highlight">Orberyx</span> nasceu para transformar esse encantamento em tecnologia. Construímos pontes de código entre os dados do cosmos e a tela do usuário, provando que o conhecimento do universo <span class="highlight">não pertence apenas aos laboratórios</span>, mas a qualquer mente curiosa com um telescópio, ou um computador."
+            </blockquote>
+
+            <div class="manifesto-footer">
+              <div class="manifesto-sign-author">
+                <div class="author-symbol">Ω</div>
+                <div class="author-text">
+                  <h4>Equipe Orberyx</h4>
+                  <p>Iniciativa POO • Programação & Ciência</p>
+                </div>
+              </div>
+
+              <div class="manifesto-creed-badge">
+                "Do olhar à tela: o cosmos em código"
+              </div>
+            </div>
+
+          </div>
+
+          <!-- As Três Pontes do Manifesto -->
+          <div class="manifesto-pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-number">01</div>
+              <h3 class="pillar-title">O Encantamento</h3>
+              <p class="pillar-desc">
+                A mesma faísca de quando uma criança ergue os olhos para a abóbada celeste e questiona o infinito. Essa inquietação é a matéria-prima de tudo o que projetamos.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-number">02</div>
+              <h3 class="pillar-title">A Ponte de Código</h3>
+              <p class="pillar-desc">
+                Transformar telemetrias brutas, APIs orbitais da NASA e algoritmos rigorosos em arquitetura limpa, persistente e compreensível em Java.
+              </p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-number">03</div>
+              <h3 class="pillar-title">A Tela Acessível</h3>
+              <p class="pillar-desc">
+                Tirar a astronomia do hermetismo acadêmico. Colocar a trajetória de asteroides e o pulso do universo diretamente diante de qualquer observador.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SEÇÃO: SOBRE A ORGANIZAÇÃO & VALORES
+         ====================================================================== -->
+    <section id="sobre">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="eyebrow-badge">
+            <span class="eyebrow-pulsar"></span>
+            Fundação & Princípios
+          </div>
+          <h2 class="section-title">Construindo tecnologia <em>com sentido e método</em></h2>
+          <p class="section-desc">
+            A Orberyx é uma startup acadêmica originada na disciplina de Programação Orientada a Objetos. Unimos o rigor do aprendizado técnico à fascinação pela astrofísica e exploração espacial.
+          </p>
+        </div>
+
+        <div class="about-grid reveal-on-scroll">
+          
+          <!-- Box de Origem -->
+          <div class="about-origin-box">
+            <span class="origin-badge">Gênese da Iniciativa</span>
+            <h3>Da sala de aula às fronteiras de dados</h3>
+            <p>
+              Não criamos apenas software para atender a uma ementa; fundamos a Orberyx como um laboratório colaborativo onde cada linha de código em Java, cada query relacional e cada fluxo de dados reflete o padrão de engenharia do mundo real.
+            </p>
+            <p>
+              Nosso objetivo primordial é desenvolver soluções tecnológicas de alto nível, integrando programação orientada a objetos, consumo de APIs científicas e interfaces intuitivas com foco no cosmos.
+            </p>
+          </div>
+
+          <!-- Missão & Visão -->
+          <div class="mission-vision-grid">
+            <div class="mv-card">
+              <div class="mv-header">
+                <span class="mv-icon">🎯</span>
+                <h4>Missão</h4>
+              </div>
+              <p>
+                Desenvolver soluções tecnológicas que integrem programação, dados e ciência de forma acessível, funcional e rigorosamente estruturada.
+              </p>
+            </div>
+
+            <div class="mv-card">
+              <div class="mv-header">
+                <span class="mv-icon">👁️</span>
+                <h4>Visão</h4>
+              </div>
+              <p>
+                Aplicar os conhecimentos adquiridos durante a formação no desenvolvimento de sistemas colaborativos, robustos e capazes de aproximar pessoas comuns dos mistérios do universo.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bento Grid: Os 5 Valores -->
+        <div class="values-bento reveal-on-scroll">
+          <div class="value-pill-card">
+            <span class="value-symbol">🤝</span>
+            <h5>Colaboração</h5>
+            <p>Desenvolvimento conjunto, decisões alinhadas e divisão orgânica de responsabilidades na equipe.</p>
+          </div>
+
+          <div class="value-pill-card">
+            <span class="value-symbol">💡</span>
+            <h5>Inovação</h5>
+            <p>Busca por soluções criativas, padrões arquiteturais elegantes e tecnologias de vanguarda.</p>
+          </div>
+
+          <div class="value-pill-card">
+            <span class="value-symbol">📚</span>
+            <h5>Aprendizado</h5>
+            <p>Evolução contínua através de pesquisa prática, resolução de problemas reais e testes constantes.</p>
+          </div>
+
+          <div class="value-pill-card">
+            <span class="value-symbol">🧩</span>
+            <h5>Organização</h5>
+            <p>Código limpo, documentação detalhada, versionamento consistente e modelo DAO transparente.</p>
+          </div>
+
+          <div class="value-pill-card">
+            <span class="value-symbol">🚀</span>
+            <h5>Tecnologia</h5>
+            <p>Aplicação da computação moderna para conectar dados de observatórios espaciais ao usuário final.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SEÇÃO: PROJETO EM FOCO — ASTROWATCH
+         ====================================================================== -->
+    <section class="project-spotlight" id="projetos">
+      <div class="container">
+        
+        <div class="section-header">
+          <div class="eyebrow-badge">
+            <span class="eyebrow-pulsar"></span>
+            Projeto Pioneiro
+          </div>
+          <h2 class="section-title">Nosso primeiro telescópio <em>em forma de código</em></h2>
+          <p class="section-desc">
+            Acompanhe a trajetória de corpos celestes em rota próxima à Terra com precisão científica e telemetria oficial da NASA.
+          </p>
+        </div>
+
+        <div class="project-showcase-card reveal-on-scroll">
+          
+          <!-- Detalhes do Projeto -->
+          <div class="project-details">
+            <div class="project-meta-strip">
+              <span class="status-badge">
+                <span class="status-pulsar-green"></span>
+                Em Desenvolvimento Ativo
+              </span>
+              <span class="version-tag">v0.0.0-snapshot</span>
+              <span class="version-tag">Filtro de busca em integração</span>
+            </div>
+
+            <h3 class="project-name">AstroWatch</h3>
+            <p class="project-tagline">"Monitoramento e rastreamento de asteroides em tempo real."</p>
+
+            <p class="project-desc">
+              O <strong>AstroWatch</strong> é uma aplicação desktop desenvolvida em Java que se conecta diretamente aos sistemas da NASA (API NeoWS). Ele decodifica trajetórias, velocidades relativas, datas de aproximação máxima e identifica potenciais riscos ao nosso planeta em uma interface gráfica moderna e fluida.
+            </p>
+
+            <!-- Lista de Funcionalidades -->
+            <ul class="project-features-list">
+              <li>
+                <span class="feature-bullet">✦</span>
+                <span>Consulta contínua à API NeoWS da NASA</span>
+              </li>
+              <li>
+                <span class="feature-bullet">✦</span>
+                <span>Filtragem por tamanho, velocidade e proximidade</span>
+              </li>
+              <li>
+                <span class="feature-bullet">✦</span>
+                <span>Alerta de Asteroides Potencialmente Perigosos (PHA)</span>
+              </li>
+              <li>
+                <span class="feature-bullet">✦</span>
+                <span>Catálogo e sistema de asteroides favoritos</span>
+              </li>
+              <li>
+                <span class="feature-bullet">✦</span>
+                <span>Persistência segura em banco MySQL com DAO</span>
+              </li>
+              <li>
+                <span class="feature-bullet">✦</span>
+                <span>Interface desktop em JavaFX com estilização CSS</span>
+              </li>
+            </ul>
+
+            <!-- Stack Tecnológica -->
+            <div class="tech-stack-row">
+              <span class="tech-badge"><strong>Java</strong> 21 LTS</span>
+              <span class="tech-badge"><strong>JavaFX</strong> Desktop UI</span>
+              <span class="tech-badge"><strong>NASA API</strong> NeoWS</span>
+              <span class="tech-badge"><strong>MySQL</strong> JDBC</span>
+              <span class="tech-badge"><strong>Jackson</strong> 3.2.2 Databind</span>
+            </div>
+
+            <div>
+              <a href="https://github.com/Orberyx/AstroWatch" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <span>Ver Repositório no GitHub</span>
+                <span class="btn-icon-pill">
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                    <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Visualização do AstroWatch (Double-Bezel & Mockup) -->
+          <div class="project-media-frame">
+            <div class="media-window">
+              <div class="window-header">
+                <div class="window-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <div class="window-title">io.github.orberyx.astrowatch — AstroWatch UI</div>
+                <div class="window-status">NASA FEED: ONLINE</div>
+              </div>
+              <img src="assets/astrowatch.png" alt="Interface do sistema AstroWatch exibindo dados de asteroides e órbita" class="project-img">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SEÇÃO: A TRIPULAÇÃO (EQUIPE)
+         ====================================================================== -->
+    <section id="tripulacao">
+      <div class="container">
+        
+        <div class="section-header center">
+          <div class="eyebrow-badge">
+            <span class="eyebrow-pulsar"></span>
+            A Tripulação
+          </div>
+          <h2 class="section-title">As mentes por trás <em>das pontes de código</em></h2>
+          <p class="section-desc">
+            Estudantes, pesquisadores e desenvolvedores unidos pela vontade de decodificar o universo através da ciência da computação.
+          </p>
+        </div>
+
+        <div class="crew-grid reveal-on-scroll">
+
+          <!-- Wendel -->
+          <article class="crew-card">
+            <div class="crew-avatar-wrapper">
+              <div class="crew-avatar-ring"></div>
+              <img src="assets/team/wendel.jpeg" alt="Foto de Wendel" class="crew-avatar" loading="lazy">
+            </div>
+            <h3 class="crew-name">Wendel</h3>
+            <span class="crew-role-badge">API NASA & Integrações</span>
+            <p class="crew-responsibility">
+              Comunicação com a NASA NeoWS API, requisições HTTP assíncronas, serialização JSON e pipeline de dados externos.
+            </p>
+            <a href="https://github.com/wndelix" target="_blank" rel="noopener noreferrer" class="crew-github-link">
+              <span>@wndelix</span> ↗
+            </a>
+          </article>
+
+          <!-- Renan -->
+          <article class="crew-card">
+            <div class="crew-avatar-wrapper">
+              <div class="crew-avatar-ring"></div>
+              <img src="assets/team/renan.jpg" alt="Foto de Renan" class="crew-avatar" loading="lazy">
+            </div>
+            <h3 class="crew-name">Renan</h3>
+            <span class="crew-role-badge">Banco de Dados & DAO</span>
+            <p class="crew-responsibility">
+              Modelagem relacional, persistência com JDBC, camada DAO, integridade referencial e estrutura de entidades.
+            </p>
+            <a href="https://github.com/renancardoso09-maker" target="_blank" rel="noopener noreferrer" class="crew-github-link">
+              <span>@renancardoso09-maker</span> ↗
+            </a>
+          </article>
+
+          <!-- Nívea -->
+          <article class="crew-card">
+            <div class="crew-avatar-wrapper">
+              <div class="crew-avatar-ring"></div>
+              <img src="assets/team/nivea.jpeg" alt="Foto de Nívea" class="crew-avatar" loading="lazy">
+            </div>
+            <h3 class="crew-name">Nívea</h3>
+            <span class="crew-role-badge">Interface & JavaFX</span>
+            <p class="crew-responsibility">
+              Concepção e construção da interface visual em JavaFX, arquivos FXML, folhas de estilo CSS e experiência do usuário.
+            </p>
+            <a href="https://github.com/niveamaria11-dev" target="_blank" rel="noopener noreferrer" class="crew-github-link">
+              <span>@niveamaria11-dev</span> ↗
+            </a>
+          </article>
+
+          <!-- Adriel -->
+          <article class="crew-card">
+            <div class="crew-avatar-wrapper">
+              <div class="crew-avatar-ring"></div>
+              <img src="assets/team/adriel.jpeg" alt="Foto de Adriel" class="crew-avatar" loading="lazy">
+            </div>
+            <h3 class="crew-name">Adriel</h3>
+            <span class="crew-role-badge">Filtros & Processamento</span>
+            <p class="crew-responsibility">
+              Algoritmos de classificação, filtragem paramétrica de asteroides e ordenação por diâmetro, velocidade e perigo potencial.
+            </p>
+            <a href="https://github.com/Adriel12179" target="_blank" rel="noopener noreferrer" class="crew-github-link">
+              <span>@Adriel12179</span> ↗
+            </a>
+          </article>
+
+          <!-- Mayrllon -->
+          <article class="crew-card">
+            <div class="crew-avatar-wrapper">
+              <div class="crew-avatar-ring"></div>
+              <img src="assets/team/mayrllon.jpg" alt="Foto de Mayrllon" class="crew-avatar" loading="lazy">
+            </div>
+            <h3 class="crew-name">Mayrllon</h3>
+            <span class="crew-role-badge">Autenticação & Favoritos</span>
+            <p class="crew-responsibility">
+              Mecanismos de autenticação, controle de sessões de usuário e gerenciamento do catálogo de asteroides favoritos.
+            </p>
+            <a href="https://github.com/Mayrllon14" target="_blank" rel="noopener noreferrer" class="crew-github-link">
+              <span>@Mayrllon14</span> ↗
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SEÇÃO HORIZONTE: CONVITE AO COSMOS
+         ====================================================================== -->
+    <section class="horizon-section">
+      <div class="horizon-glow"></div>
+      <div class="container">
+        
+        <div class="horizon-box reveal-on-scroll">
+          <div class="eyebrow-badge">
+            <span class="eyebrow-pulsar"></span>
+            O Universo Espera
+          </div>
+          <h2>O conhecimento do cosmos pertence a quem <em>ousa olhar além.</em></h2>
+          <p>
+            Estamos apenas no início da nossa jornada orbital. Acompanhe a evolução do código, colabore com as nossas pesquisas ou venha observar os asteroides conosco.
+          </p>
+
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://github.com/Orberyx" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <span>Acompanhar no GitHub</span>
+              <span class="btn-icon-pill">↗</span>
+            </a>
+            <a href="#inicio" class="btn-secondary">
+              <span>Voltar ao Início</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ========================================================================
+       RODAPÉ ORBERYX
+       ======================================================================== -->
+  <footer>
+    <div class="container">
+      
+      <div class="footer-top">
+        
+        <div class="footer-brand">
+          <a href="#inicio" class="footer-logo">
+            <picture>
+              <source srcset="assets/orberyx-white.svg" type="image/svg+xml">
+              <img src="assets/orberyx-white.png" alt="Orberyx Logo" class="footer-logo-img">
+            </picture>
+            <span class="footer-logo-text">Orberyx</span>
+          </a>
+          <p class="footer-motto">
+            "Da curiosidade de uma criança às fronteiras do espaço."
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <h6>Exploração</h6>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#manifesto">Manifesto Fundamental</a></li>
+            <li><a href="#sobre">Sobre a Startup</a></li>
+            <li><a href="#projetos">AstroWatch</a></li>
+            <li><a href="#tripulacao">Tripulação</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h6>Tecnologia & Dados</h6>
+          <ul>
+            <li><a href="https://api.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA NeoWS API ↗</a></li>
+            <li><a href="https://openjdk.org/projects/jdk/21/" target="_blank" rel="noopener noreferrer">Java 21 LTS ↗</a></li>
+            <li><a href="https://openjfx.io/" target="_blank" rel="noopener noreferrer">OpenJFX Platform ↗</a></li>
+            <li><a href="https://github.com/Orberyx" target="_blank" rel="noopener noreferrer">Repositórios GitHub ↗</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-creds">
+          © 2026 <strong>Orberyx</strong>. Construído com curiosidade sob o céu noturno.
+        </div>
+        <div class="footer-sign">
+          Desenvolvido com <span>código aberto</span> e respeito ao cosmos.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
